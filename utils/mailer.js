@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendResetEmail = (email, token) => {
-  const resetLink = `http://localhost:3000/reset-password/${token}`;
+  const resetLink = `https://memomateee.onrender.com/reset-password/${token}`;
 
   const mailOptions = {
     from: 'your-email@gmail.com',
