@@ -5,7 +5,7 @@ const Note = require("../models/Note");
 const { body, validationResult } = require("express-validator");
 
 // Route 1 : Get all the notes using Fetch GET "/api/notes/fetchallnotes" login requisre
-router.get("/fetchallnotes", fetchuser, async (req, res) => {
+router.get("fetchallnotes", fetchuser, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id });
     res.json(notes);
@@ -16,7 +16,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
 });
 // Route 2 : add a new notes using POST "/api/notes/addnote" login require
 router.post(
-  "/addnote",
+  "addnote",
   fetchuser,
   [
     body("title", "Enter a valid title min length is 3").isLength({ min: 3 }),
@@ -71,7 +71,7 @@ router.post(
 
 // });
 
-router.put("/updatenote/:id", fetchuser, async (req, res) => {
+router.put("updatenote/:id", fetchuser, async (req, res) => {
   try {
     const { title, description, tag } = req.body;
     // Create a newNote object
@@ -99,7 +99,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
 });
 
 
-router.post("/deletenote/:id",fetchuser,async (req, res) => {
+router.post("deletenote/:id",fetchuser,async (req, res) => {
 
   const note = await Note.findById(req.params.id);
 if (!note) {
